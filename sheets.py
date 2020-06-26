@@ -1,9 +1,33 @@
-#import stats
+import stats
 import output
 import gspread
 import os
 from oauth2client.service_account import ServiceAccountCredentials
 from pprint import pprint
+
+def getevents(client, url, name):
+  fsheet = client.open_by_url(url)
+  sheet = fsheet.worksheet(name)
+
+  data = sheet.get_all_records()
+  active = []
+  for key in list(data[0].keys()):
+    if data[0][key] == "ON":
+      active.append(key)
+  return active
+
+def getemails(client, url, name, event, email):
+  fsheet = client.open_by_url(url)
+  sheet = fsheet.worksheet(name)
+  data = sheet.get_all_records()
+  emails = []
+  password = ""
+  for row in data:
+    if(not row[event].isspace() and row[event] and data.index(row) > 0 and data.index(row) < len(data) - 1):
+      emails.append(row[event])
+    elif data.index(row) == len(data) - 1:
+      password = row[event]
+  return email in emails, password
 
 def formatrun(client, url, name):
   os.system("clear")
@@ -19,12 +43,9 @@ def formatrun(client, url, name):
   except:
     rs = fsheet.worksheet(sheet.title + "(r)")
 
-  print()
-
   fdata = stats.getSortedStats(data)
-
-  #pprint(fdata)
   output.outdat(rs, fdata)
+
   return "success"
 
 def check(client, url, name):
