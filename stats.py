@@ -1,0 +1,62 @@
+fdata = []
+def getSortedStats(data):
+  #print(data)
+
+  fdata = []
+  for row in data:
+    nrow = {"EMAIL":row["EMAIL"], "NAME":(row["FIRST"], row["LAST"]), "ID":row["ID"], "AVERAGE":0, "TIMES":[0, 0, 0, 0, 0]}
+
+    for i in range(5):
+      if(row["PENALTY " + str(i + 1)] == "DNF"):
+        nrow["TIMES"][i] = "DNF"
+      elif(row["PENALTY " + str(i + 1)] == "2+"):
+        nrow["TIMES"][i] = float('%.2f'%(row["ROUND " + str(i + 1)] + 2))
+      else:
+        nrow["TIMES"][i] = float('%.2f'%(row["ROUND " + str(i + 1)]))
+
+    ltime = nrow["TIMES"].copy()
+    btime, stime = ltime[0], ltime[0]
+    for time in ltime[1:]:
+      if(time == "DNF"):
+        btime = time
+      elif(stime == "DNF"):
+        stime = time
+      elif btime != "DNF" and time > btime:
+        btime = time
+      elif stime != "DNF" and time < stime:
+        stime = time
+    
+    #print(ltime)
+
+    ltime.remove(stime)
+    ltime.remove(btime)
+
+    #print(ltime)
+
+    if("DNF" in ltime):
+      nrow["AVERAGE"] = "DNF"
+    else:
+      nrow["AVERAGE"] = float('%.2f'%(sum(ltime) / len(ltime)))
+
+    fdata.append(nrow)
+  
+  #print(fdata)
+
+  for ind in range(len(fdata)):
+    for row in fdata[ind + 1:]:
+      if(fdata[ind]["AVERAGE"] == "DNF"):
+        break
+      if(row["AVERAGE"] == "DNF"):
+        temp = row
+        fdata[fdata.index(row)] = fdata[ind]
+        fdata[ind] = temp
+        break
+      if(row["AVERAGE"] > fdata[ind]["AVERAGE"]):
+        temp = row
+        fdata[fdata.index(row)] = fdata[ind]
+        fdata[ind] = temp
+        break
+  
+  fdata = fdata[::-1]
+
+  return fdata
