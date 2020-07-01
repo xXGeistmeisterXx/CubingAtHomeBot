@@ -10,9 +10,9 @@ def getSortedStats(data):
       if(row["PENALTY " + str(i + 1)] == "DNF"):
         nrow["TIMES"][i] = "DNF"
       elif(row["PENALTY " + str(i + 1)] == "2+"):
-        nrow["TIMES"][i] = float('%.2f'%(row["ROUND " + str(i + 1)] + 2))
+        nrow["TIMES"][i] = float('%.2f'%(row["SOLVE " + str(i + 1)] + 2))
       else:
-        nrow["TIMES"][i] = float('%.2f'%(row["ROUND " + str(i + 1)]))
+        nrow["TIMES"][i] = float('%.2f'%(row["SOLVE " + str(i + 1)]))
 
     ltime = nrow["TIMES"].copy()
     btime, stime = ltime[0], ltime[0]
