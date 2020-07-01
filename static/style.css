@@ -1,0 +1,27 @@
+body{
+  font-family: 'Candara', sans-serif;
+  background-color: #FFFFFF;
+  color: #419fe8;
+  cursor:default;
+  text-align:center;
+}
+h1{
+  color:#4b8bbd;
+  text-align:center;
+}
+h2{
+  color:#368cf7;
+}
+select, input, button{
+  border-color:#419fe8;
+  border-width:2px;
+  background-color:#abdbff;
+  border-radius:2px;
+  color: #0b6fbd;
+}
+select:hover, option:hover, input:hover#submit{
+  cursor:pointer;
+}
+option {
+  border-radius:2px;
+}

@@ -11,7 +11,7 @@ def getevents(client, url, name):
 
   data = sheet.get_all_records()
   active = []
-  for key in list(data[0].keys()):
+  for key in list(data[0].keys())[::2]:
     if data[0][key] == "ON":
       active.append(key)
   return active
@@ -23,10 +23,12 @@ def getemails(client, url, name, event, email):
   emails = []
   password = ""
   for row in data:
-    if(not row[event].isspace() and row[event] and data.index(row) > 0 and data.index(row) < len(data) - 1):
+    if(not row[event].isspace() and row[event] and data.index(row) > 0):
       emails.append(row[event])
-    elif data.index(row) == len(data) - 1:
-      password = row[event]
+  print(list(list(data)[0]))
+  password = list(list(data)[0])[list(list(data)[0]).index(event) + 1]
+  print(password)
+  print(emails)
   return email in emails, password
 
 def formatrun(client, url, name):
@@ -39,7 +41,7 @@ def formatrun(client, url, name):
 
   rs = None
   try:
-    rs = fsheet.add_worksheet(title=sheet.title + "(r)", rows=str(sheet.row_count), cols="9")
+    rs = fsheet.add_worksheet(title=sheet.title + "(r)", rows=str(sheet.row_count), cols="10")
   except:
     rs = fsheet.worksheet(sheet.title + "(r)")
 
@@ -100,8 +102,13 @@ def stuff():
     print("\nSheet not found")
     name = input("Sheet name: ")
 
-  formatrun(client, url, name)
+  fsheet = client.open_by_url(url)
+  sheet = fsheet.worksheet(name)
+  data = sheet.get_all_records()
+
+  print(data)
+
+  #formatrun(client, url, name)
   print("done")
 
-if __name__ == "__main__":
-  stuff()
+#stuff()
