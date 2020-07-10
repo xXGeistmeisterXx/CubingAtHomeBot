@@ -10,7 +10,10 @@ h1{
   text-align:center;
 }
 h2{
-  color:#368cf7;
+  color:#318dd3;
+}
+h4 {
+  color:rgb(31, 105, 196);
 }
 select, input, button{
   border-color:#419fe8;
@@ -24,4 +27,23 @@ select:hover, option:hover, input:hover#submit{
 }
 option {
   border-radius:2px;
+}
+hr {
+  height:.15vw;
+  background-color:#4b8bbd;
+  color:#0b6fbd;
+  border-radius:5px;
+}
+.big {
+  width:50%;
+}
+.small {
+  width:30%;
+}
+.bad{
+  color:red;
+  visibility:hidden;
+}
+.scramble{
+  margin:1vw 1vw 1vw 1vw;
 }
