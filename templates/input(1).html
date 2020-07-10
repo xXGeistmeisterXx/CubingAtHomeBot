@@ -1,0 +1,121 @@
+<form method=post enctype=multipart/form-data>
+  <h1>Submit Times </h1>
+  <h3>Something about formatting </h3><br>
+  <p>First Name <input type="text" name="fname" id="fname"></p><br>
+  <p>Last Name <input type="text" name="lname" id="lname"></p><br>
+  <p>WCA ID (If you don't have one, write NA) <input type="text" name="wcaid" id="wcaid"></p><br>
+  <p>Email <input type="text" name="email" id="email"></p><br>
+  <div>
+    <p>{{ scrambles[0] }}<br>
+    Time: <input type="text" name="time1" id="time1" onchange = "check('time1')">
+    Penalty: 
+    <select name="pen1"id="pen1">
+      <option value="None">N/A</option>
+      <option value="2+">+2</option>
+      <option value="DNF">DNF</option>
+    </select>
+    <img <img src="{{ images[0] }}" height=10%></p>
+    <p id="time1i" class="bad" style="visibility:hidden; color:red;">Invalid formatting</p>
+  </div>
+  <br>
+  <div>
+    <p>{{ scrambles[1] }}<br>
+    Time: <input type="text" name="time2" id="time2" onchange = "check('time2')">
+    Penalty: 
+    <select name="pen2"id="pen2">
+      <option value="None">N/A</option>
+      <option value="2+">+2</option>
+      <option value="DNF">DNF</option>
+    </select>
+    <img <img src="{{ images[1] }}" height=10%></p>
+    <p id="time2i" style="visibility:hidden; color:red;" class="bad">Invalid formatting</p>
+  </div>
+  <br>
+  <div>
+    <p>{{ scrambles[2] }}<br>
+    Time: <input type="text" name="time3" id="time3" onchange = "check('time3')">
+    Penalty: 
+    <select name="pen3"id="pen3">
+      <option value="None">N/A</option>
+      <option value="2+">+2</option>
+      <option value="DNF">DNF</option>
+    </select>
+    <img <img src="{{ images[2] }}" height=10%></p>
+    <p id="time3i" style="visibility:hidden; color:red;" class="bad">Invalid formatting</p>
+  </div>
+  <br>
+  <div>
+    <p>{{ scrambles[3] }}<br>
+    Time: <input type="text" name="time4" id="time4" onchange = "check('time4')">
+    Penalty: 
+    <select name="pen4"id="pen4">
+      <option value="None">N/A</option>
+      <option value="2+">+2</option>
+      <option value="DNF">DNF</option>
+    </select>
+    <img <img src="{{ images[3] }}" height=10%></p>
+    <p id="time4i" style="visibility:hidden; color:red;" class="bad">Invalid formatting</p>
+  </div>
+  <br>
+  <div>
+    <p>{{ scrambles[4] }}<br>
+    Time: <input type="text" name="time5" id="time5" onchange = "check('time5')">
+    Penalty: 
+    <select name="pen5"id="pen5">
+      <option value="None">N/A</option>
+      <option value="2+">+2</option>
+      <option value="DNF">DNF</option>
+    </select>
+    <img <img src="{{ images[4] }}" height=10%></p>
+    <p id="time5i" style="visibility:hidden; color:red;" class="bad">Invalid formatting</p>
+  </div>
+  <br>
+  <input id="temail" name="temail" type="hidden" value="{{ email }}">
+  <input id="event" name="event" type="hidden" value="{{ event }}">
+  <input id="2" name="2" type="hidden" value="true">
+  <input id=submit type=submit value=submit disabled>
+  <p id="alltimes" style="visibility:hidden; color:red;" class="bad">something</p>
+</form>
+<script>
+
+  function check(eid) {
+    var time = document.getElementById(eid).value
+    var re = /^([0-9]{1,2}:)?[0-9]{1,2}.[0-9]{2}$/
+    if(re.test(time)) {
+      document.getElementById(eid + "i").style.visibility = "hidden";
+      console.log("hidden")
+    }
+    else{
+      document.getElementById(eid + "i").style.visibility = "visible";
+      console.log("visible")
+    }
+
+    if(re.test(document.getElementById("time1").value) && re.test(document.getElementById("time2").value) && re.test(document.getElementById("time3").value) && re.test(document.getElementById("time4").value) && re.test(document.getElementById("time5").value)){
+      console.log("enabled");
+      document.getElementById("submit").disabled = false;
+      document.getElementById("alltimes").style.visibility = "hidden"
+    }
+    else{
+      console.log("disabled");
+      var ele = "Some of your times are formatted incorrectly ( "
+      var first = true
+      var i;
+      for (i = 1; i <= 5; i++) {
+        if(!re.test(document.getElementById("time".concat(i.toString())).value)){
+          if(first){
+            ele = ele.concat(i.toString());
+            first = false;
+          }
+          else{
+            ele = ele.concat(", " + i.toString());
+          }
+        }
+      }
+      document.getElementById("alltimes").innerHTML = ele.concat(" )");
+      document.getElementById("alltimes").style.visibility = "visible"
+      document.getElementById("submit").disabled = true;
+    }
+
+  }
+
+</script>

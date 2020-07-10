@@ -5,6 +5,37 @@ import os
 from oauth2client.service_account import ServiceAccountCredentials
 from pprint import pprint
 
+def importtimes(client, url, event, ldata):
+  fsheet = client.open_by_url(url)
+  print(event)
+
+  rs = None
+  try:
+    rs = fsheet.add_worksheet(title=event, rows=str(1000), cols="14")
+  except:
+    rs = fsheet.worksheet(event)
+  data = rs.get_all_records()
+  start = 0
+  if data:
+    start = len(data)
+  return output.results(rs, start, ldata)
+
+def getscrambles(client, url, name, event):
+  fsheet = client.open_by_url(url)
+  sheet = fsheet.worksheet(name)
+  data = sheet.get_all_records()
+  scrambles = []
+  images = []
+  ind = list(data[0]).index(event)
+  skey = list(data[0])[ind + 1]
+  ikey = list(data[0])[ind + 2]
+  for row in data:
+    scrambles.append(row[skey])
+    images.append(row[ikey])
+  print(scrambles)
+  print(images)
+  return scrambles, images
+
 def getevents(client, url, name):
   fsheet = client.open_by_url(url)
   sheet = fsheet.worksheet(name)
@@ -15,6 +46,36 @@ def getevents(client, url, name):
     if data[0][key] == "ON":
       active.append(key)
   return active
+
+def geteventsn(client, url, name):
+  fsheet = client.open_by_url(url)
+  sheet = fsheet.worksheet(name)
+
+  data = sheet.get_all_records()
+  active = []
+  for key in list(data[0].keys()):
+    if data[0][key] == "ON":
+      active.append(key)
+  return active
+
+def inevent(client, url, name, event, email):
+  fsheet = client.open_by_url(url)
+  sheet = fsheet.worksheet(name)
+  data = sheet.get_all_records()
+  emails = []
+  for row in data:
+    if(not row[event].isspace() and row[event] and data.index(row) > 0):
+      emails.append(row[event])
+  return email in emails
+
+def checkemail(client, url, event, email):
+  fsheet = client.open_by_url(url)
+  sheet = fsheet.worksheet(event)
+  data = sheet.get_all_records()
+  emails = []
+  for row in data:
+    emails.append(row["EMAIL"])
+  return email in emails
 
 def getemails(client, url, name, event, email):
   fsheet = client.open_by_url(url)
