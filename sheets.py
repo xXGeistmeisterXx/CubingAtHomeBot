@@ -70,7 +70,10 @@ def inevent(client, url, name, event, email):
 
 def checkemail(client, url, event, email):
   fsheet = client.open_by_url(url)
-  sheet = fsheet.worksheet(event)
+  try: 
+    sheet = fsheet.worksheet(event)
+  except:
+    return False
   data = sheet.get_all_records()
   emails = []
   for row in data:

@@ -111,13 +111,13 @@
       <input id="event" name="event" type="hidden" value="{{ event }}">
       <input id="2" name="2" type="hidden" value="true">
       <input id=submit type=submit value=submit disabled>
-      <p id="alltimes" style="visibility:hidden; color:red;" class="bad">something</p>
+      <p id="alltimes" style="visibility:visible; color:red;" class="bad">Please fill all fields</p>
     </form>
     <script>
       
       function full() {
         console.log("ran");
-        if(! document.getElementById("fname").value && ! document.getElementById("lname").value && ! document.getElementById("wcaid").value && ! document.getElementById("email").value){
+        if(! document.getElementById("fname").value || ! document.getElementById("lname").value || ! document.getElementById("wcaid").value || ! document.getElementById("email").value){
           document.getElementById("alltimes").style.visibility = "visible"
           document.getElementById("submit").disabled = true;
           document.getElementById("alltimes").innerHTML = "Please fill all fields";
@@ -127,7 +127,7 @@
         else{
           document.getElementById("submit").disabled = false;
           document.getElementById("alltimes").style.visibility = "hidden"
-          console.log("ran");
+          console.log("true");
           return(true);
         }
         
