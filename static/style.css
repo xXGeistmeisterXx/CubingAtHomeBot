@@ -22,7 +22,15 @@ select, input, button{
   border-radius:2px;
   color: #0b6fbd;
 }
-select:hover, option:hover, input:hover#submit{
+select:disabled, input:disabled, button:disabled{
+  color: #b9b9b9;
+  background-color:#eeeeee;
+  border-color:#e0e0e0;
+}
+select:disabled:hover, option:disabled:hover, input:disabled:hover#submit{
+  cursor:default;
+}
+select:hover, option:hover, input:hover#submit, button:hover{
   cursor:pointer;
 }
 option {

@@ -1,20 +1,24 @@
-  <!doctype html>
+<!doctype html>
+<html>
   <head>
-    <title>Cubing Tool Name</title>
+    <title>Cubing Tool Name - Format</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='icon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
   <body>
-    <h1>Link Generator</h1>
-    <!--<img src="https://lh3.google.com/u/0/d/1y-7_0LmG3GuCRuirtZpEIXDz9RBnqV8s=w1920-h920-iv1" height=75vw>-->
-    <div><img src="{{ url_for('static', filename='icon.png') }}" height=75vw><img src="{{ url_for('static', filename='C2C.png') }}" height=75vw><img src="{{ url_for('static', filename='cubicle.png') }}" height=75vw></div>
+    <h1>Format Sheet</h1>
+    <h3>HOW TO here</h3>
+    <hr class="small">    
+    <div><img src="{{ url_for('static', filename='icon.png') }}" height=65vw><img src="{{ url_for('static', filename='C2C.png') }}" height=75vw><img src="{{ url_for('static', filename='cubicle.png') }}" height=75vw></div>
+    <hr class="small">
     <form method=post enctype=multipart/form-data>
       <b><p>url: </p></b><input type="text" name="url" id="url">
       <b><p>sheet name: </p></b><input type="text" name="name" id="name"><br><br>
       <input type=submit value=submit id=submit>
   </form>
   </body>
+</html>
 
 
 

@@ -1,8 +1,25 @@
-<form method=post enctype=multipart/form-data>
-  <p>Select an event</p>
+<!doctype html>
+<html>
+  <head>
+    <title>Cubing Tool Name - Events</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='icon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+  <h1>Events</h1>
+  <h3>Something about selecting an event</h3>
+  <hr class="small">
+  <div><img src="{{ url_for('static', filename='icon.png') }}" height=65vw><img src="{{ url_for('static', filename='C2C.png') }}" height=75vw><img src="{{ url_for('static', filename='cubicle.png') }}" height=75vw></div>
+  <hr class="small">
+  <form method=post enctype=multipart/form-data>
+  <p><b>Event: </b></p>
       <select name="events"id="events">
       {{ select | safe}}
       </select>
-      <p>email: <input type="text" name="email" id="email"></p>
-      <input type=submit value=submit>
+      <p><b>Email: </b></p>
+      <input type="text" name="email" id="email">
+      <br><br><input type=submit value=submit>
   </form>
+  </body>
+</html>
