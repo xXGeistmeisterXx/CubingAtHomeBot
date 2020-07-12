@@ -63,7 +63,7 @@ def getSortedStats(data):
   fdata = fdata[::-1]
 
   for ind in range(len(fdata)):
-    for row in fdata[ind + 1:]:
+    for row in fdata[ind]:
       fdata[ind]["AVERAGE"] = mtos(fdata[ind]["AVERAGE"])
 
   return fdata
@@ -89,7 +89,7 @@ def mtos(ttime):
     if(len(str(rest)) < 2):
       rest = str(rest) + "0"
     ntime += "." + rest
-  return ntime
+  return str(ntime)
     
 
 def stom(ttime):

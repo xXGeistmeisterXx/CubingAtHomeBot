@@ -99,8 +99,6 @@ def url():
   if request.method == 'POST':
     url = request.form.get("url")
     name = request.form.get("name")
-    print(url)
-    print(name)
     newurl = "https://CubingBot--tylergeist1.repl.co/events?url=" + url + "&name=" + name
     return render_template("link.html", url="<a target='_blank' href=" + newurl + ">" + newurl + "</a>")
   else:
@@ -111,8 +109,6 @@ def format():
   if request.method == 'POST':
     url = request.form.get("url")
     name = request.form.get("name")
-    print(url)
-    print(name)
     return out(url, name)
   else:
 	  return render_template("format.html")
@@ -125,20 +121,19 @@ def out(url, name):
   ans = checkall(client, url, name)
   if(ans): return ans
 
-  return sh.formatrun(client, url, name)
+  sh.formatrun(client, url, name)
+  return render_template("fsuccess.html")
 
 def checkall(client, url, name):
   while True:
     flag = True
     if(sh.check(client, url, "test") > -2):
-      print("Module Found")
       break
     return render_template("error.html", error="bad module link")
 
   while True:
     flag = True
     if(sh.check(client, url, name) > -1):
-      print("Sheet found")
       break
     return render_template("error.html", error="bad sheet name")
 

@@ -7,7 +7,6 @@ from pprint import pprint
 
 def importtimes(client, url, event, ldata):
   fsheet = client.open_by_url(url)
-  print(event)
 
   rs = None
   try:
@@ -32,8 +31,6 @@ def getscrambles(client, url, name, event):
   for row in data:
     scrambles.append(row[skey])
     images.append(row[ikey])
-  print(scrambles)
-  print(images)
   return scrambles, images
 
 def getevents(client, url, name):
@@ -89,10 +86,7 @@ def getemails(client, url, name, event, email):
   for row in data:
     if(not row[event].isspace() and row[event] and data.index(row) > 0):
       emails.append(row[event])
-  print(list(list(data)[0]))
   password = list(list(data)[0])[list(list(data)[0]).index(event) + 1]
-  print(password)
-  print(emails)
   return email in emails, password
 
 def formatrun(client, url, name):
