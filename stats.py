@@ -1,5 +1,4 @@
 def getSortedStats(data):
-  #print(data)
 
   fdata = []
   for row in data:
