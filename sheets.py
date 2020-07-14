@@ -61,6 +61,7 @@ def inevent(client, url, name, event, email):
   data = sheet.get_all_records()
   emails = []
   for row in data:
+    row[event] = str(row[event])
     if(not row[event].isspace() and row[event] and data.index(row) > 0):
       emails.append(row[event])
   return email in emails

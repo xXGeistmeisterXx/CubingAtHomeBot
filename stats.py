@@ -41,29 +41,24 @@ def getSortedStats(data):
       
 
     fdata.append(nrow)
-  
-  #print(fdata)
 
   for ind in range(len(fdata)):
     for row in fdata[ind + 1:]:
       if(fdata[ind]["AVERAGE"] == "DNF"):
-        break
-      if(row["AVERAGE"] == "DNF"):
+        pass
+      elif(row["AVERAGE"] == "DNF"):
         temp = row
         fdata[fdata.index(row)] = fdata[ind]
         fdata[ind] = temp
-        break
-      if(row["AVERAGE"] > fdata[ind]["AVERAGE"]):
+      elif(row["AVERAGE"] > fdata[ind]["AVERAGE"]):
         temp = row
         fdata[fdata.index(row)] = fdata[ind]
         fdata[ind] = temp
-        break
   
   fdata = fdata[::-1]
 
   for ind in range(len(fdata)):
-    for row in fdata[ind]:
-      fdata[ind]["AVERAGE"] = mtos(fdata[ind]["AVERAGE"])
+    fdata[ind]["AVERAGE"] = mtos(fdata[ind]["AVERAGE"])
 
   return fdata
 
