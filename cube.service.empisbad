@@ -3,7 +3,7 @@ Description=CUBEBOT Uwsgi
 Requires=nginx.service
 After=nginx.service
 [Service]
-ExecStart=/usr/bin/uwsgi -i /opt/cube/CubingAtHomeBot/cube.ini --need-app --logto /var/log/cube.log
+ExecStart=/usr/bin/uwsgi -H /opt/cube/CubingAtHomeBot/environments/cube -i /opt/cube/CubingAtHomeBot/cube.ini --need-app --logto /var/log/cube.log
 ExecStop=/bin/kill $MAINPID
 KillMode=process
 Restart=always

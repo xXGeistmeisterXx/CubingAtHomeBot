@@ -3,3 +3,5 @@ poetry.lock
 pyproject.toml
 pycache/
 __pycache__/
+environments/
+*.pyc

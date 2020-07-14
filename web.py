@@ -4,7 +4,7 @@ import stats as st
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
-app = Flask('')
+app = Flask(__name__)
 
 @app.route('/',  methods=['POST', 'GET'])
 def home():
@@ -139,5 +139,6 @@ def checkall(client, url, name):
 
   return None
 
-app.run(host='0.0.0.0',port=8080)
+if __name__ == '__main__':
+    app.run('0.0.0.0','80')
 
