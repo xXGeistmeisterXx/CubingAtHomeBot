@@ -8,14 +8,31 @@ function full() {
     return(false);
   }
   else{
-    if(check("time1")){
+    open(false);
+    return(true);
+  }
+
+}
+
+function open(some)
+{
+  if(some){
+    if(!(! document.getElementById("fname").value || ! document.getElementById("lname").value || ! document.getElementById("wcaid").value || ! document.getElementById("email").value)){
       document.getElementById("submit").disabled = false;
       document.getElementById("alltimes").style.visibility = "hidden"
       console.log("true");
     }
-    return(true);
+  }else{
+    var re = /^([0-9]{1,2}:)?[0-9]{1,2}.[0-9]{2}$/
+    if(re.test(document.getElementById("time1").value) && re.test(document.getElementById("time2").value) && re.test(document.getElementById("time3").value) && re.test(document.getElementById("time4").value) && re.test(document.getElementById("time5").value)){
+      document.getElementById("submit").disabled = false;
+      document.getElementById("alltimes").style.visibility = "hidden"
+      console.log("true");
+    }
   }
-
+  document.getElementById("submit").disabled = false;
+  document.getElementById("alltimes").style.visibility = "hidden";
+  console.log("true");
 }
 
 function check(eid) {
@@ -31,13 +48,9 @@ function check(eid) {
   }
 
   if(re.test(document.getElementById("time1").value) && re.test(document.getElementById("time2").value) && re.test(document.getElementById("time3").value) && re.test(document.getElementById("time4").value) && re.test(document.getElementById("time5").value)){
-    console.log("enabled");
-    document.getElementById("submit").disabled = false;
-    document.getElementById("alltimes").style.visibility = "hidden"
+    open(true);
   }
   else{
-
-    if(full()){
 
       console.log("disabled");
       var ele = "Some of your times are formatted incorrectly ( "
@@ -57,6 +70,5 @@ function check(eid) {
       document.getElementById("alltimes").innerHTML = ele.concat(" )");
       document.getElementById("alltimes").style.visibility = "visible"
       document.getElementById("submit").disabled = true;
-    }
   }
 }
