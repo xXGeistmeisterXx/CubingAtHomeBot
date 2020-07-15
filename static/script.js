@@ -8,7 +8,7 @@ function full() {
     return(false);
   }
   else{
-    if(re.test(document.getElementById("time1").value) && re.test(document.getElementById("time2").value) && re.test(document.getElementById("time3").value) && re.test(document.getElementById("time4").value) && re.test(document.getElementById("time5").value)){
+    if(re.test(check("time6")){
       document.getElementById("submit").disabled = false;
       document.getElementById("alltimes").style.visibility = "hidden"
       console.log("true");
