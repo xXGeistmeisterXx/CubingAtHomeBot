@@ -31,9 +31,6 @@ function open(some)
       console.log("true");
     }
   }
-  document.getElementById("submit").disabled = false;
-  document.getElementById("alltimes").style.visibility = "hidden";
-  console.log("true");
 }
 
 function check(eid) {
