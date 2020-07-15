@@ -88,7 +88,9 @@ def events():
     if(ans): return ans
 
     events = sh.geteventsn(client, url, name)
-
+	
+    print(events)
+	
     items = ""
     for event in events:
       items += '<option value="%s">%s</option> ' % (event, event)
