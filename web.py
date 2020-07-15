@@ -17,7 +17,7 @@ def events():
     if(request.form.get("1")):
       url = request.form.get("url")
       name = request.form.get("name")
-      newurl = "https://CubingBot--tylergeist1.repl.co/events?url=" + url + "&name=" + name
+      newurl = "https://cubething.kikoho.xyz/events?url=" + url + "&name=" + name
       return render_template("link.html", url="<a target='_blank' href=" + newurl + ">" + newurl + "</a>")
 
     elif(request.form.get("2")):
