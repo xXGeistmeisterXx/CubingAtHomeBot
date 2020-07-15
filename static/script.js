@@ -21,6 +21,8 @@ function open(some)
       document.getElementById("submit").disabled = false;
       document.getElementById("alltimes").style.visibility = "hidden"
       console.log("true");
+    }else{
+      full()
     }
   }else{
     var re = /^([0-9]{1,2}:)?[0-9]{1,2}.[0-9]{2}$/
@@ -29,6 +31,8 @@ function open(some)
       document.getElementById("submit").disabled = false;
       document.getElementById("alltimes").style.visibility = "hidden"
       console.log("true");
+    }else{
+      check("time1")
     }
   }
 }
