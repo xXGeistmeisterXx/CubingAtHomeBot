@@ -76,7 +76,7 @@ def checkemail(client, url, event, email):
   emails = []
   for row in data:
     emails.append(str(row["EMAIL"]))
-  return email in emails
+  return str(email) in emails
 
 def getemails(client, url, name, event, email):
   fsheet = client.open_by_url(url)
