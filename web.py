@@ -93,7 +93,7 @@ def events():
 	
     items = ""
     for event in events:
-      items += '<option value="%s">%s</option> ' % (event, event)
+      items += '<option value="%s">%s</option> ' % (str(event), str(event))
     return render_template("form.html", select=items)
 
 @app.route('/url',  methods=['POST', 'GET'])
