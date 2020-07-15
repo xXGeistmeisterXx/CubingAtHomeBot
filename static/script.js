@@ -24,6 +24,7 @@ function open(some)
     }
   }else{
     var re = /^([0-9]{1,2}:)?[0-9]{1,2}.[0-9]{2}$/
+    console.log(re.test(document.getElementById("time1").value))
     if(re.test(document.getElementById("time1").value) && re.test(document.getElementById("time2").value) && re.test(document.getElementById("time3").value) && re.test(document.getElementById("time4").value) && re.test(document.getElementById("time5").value)){
       document.getElementById("submit").disabled = false;
       document.getElementById("alltimes").style.visibility = "hidden"
