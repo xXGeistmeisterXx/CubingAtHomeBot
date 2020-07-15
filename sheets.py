@@ -23,14 +23,18 @@ def getscrambles(client, url, name, event):
   fsheet = client.open_by_url(url)
   sheet = fsheet.worksheet(name)
   data = sheet.get_all_records()
+  print(data)
   scrambles = []
   images = []
   ind = list(data[0]).index(event)
   skey = list(data[0])[ind + 1]
   ikey = list(data[0])[ind + 2]
+  print(skey)
+  print(ikey)
   for row in data:
     scrambles.append(row[skey])
     images.append(row[ikey])
+  print(scrambles)
   return scrambles, images
 
 def getevents(client, url, name):
