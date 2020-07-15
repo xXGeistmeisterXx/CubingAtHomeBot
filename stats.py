@@ -12,7 +12,7 @@ def getSortedStats(data):
       else:
         nrow["TIMES"][i] = float('%.2f'%(row["SOLVE " + str(i + 1)]))
 
-    ltime = nrow["TIMES"].copy()
+    ltime = nrow["TIMES"][:]
     btime, stime = ltime[0], ltime[0]
     for time in ltime[1:]:
       if(time == "DNF"):
