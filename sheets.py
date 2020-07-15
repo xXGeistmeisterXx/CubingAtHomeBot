@@ -76,6 +76,11 @@ def checkemail(client, url, event, email):
   emails = []
   for row in data:
     emails.append(str(row["EMAIL"]))
+    
+  print(emails)
+  print(type(emails))
+  print(email)
+  print(type(email))
   return str(email) in emails
 
 def getemails(client, url, name, event, email):
