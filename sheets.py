@@ -75,7 +75,7 @@ def checkemail(client, url, event, email):
   data = sheet.get_all_records()
   emails = []
   for row in data:
-    emails.append(row["EMAIL"])
+    emails.append(str(row["EMAIL"]))
   return email in emails
 
 def getemails(client, url, name, event, email):
