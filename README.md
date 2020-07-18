@@ -7,7 +7,7 @@ All you need to create a competition is a google sheet with certain formatting. 
 ### Create Event
 Once replacing all the placeholder data you will have to share the sheet with the service account <b>cubingbot@cubingbot-279013.iam.gserviceaccount.com</b>. 
 <br><br><img src="https://imgur.com/P8Ven7gl.png" height=220px/><br><br>
-You can then go to https://cubething.kikoho.xyz/url and put in the link to the google sheets module from your address bar and the name sheet where your events are stored. This will create the link you will give to your competitors that references back to that module and sheet.
+You can then go to https://cubething.kikoho.xyz/url and put in the link to the google sheets module from your address bar and the name of the sheet where your events are stored. This will create the link you will give to your competitors that references back to that module and sheet.
 <br><br><img src="https://imgur.com/3igbmuVl.png" height=20px/><br>
 <br><br><img src="https://imgur.com/zTzlI9cl.png" height=350px/><br><br>
 ### Seeing Reults
