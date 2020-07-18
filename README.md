@@ -14,4 +14,4 @@ When all times have been submitted for an event you can then format the times to
 ## Information
 This tool was created using Python and vanilla HTML, Javascript and CSS.
 ## License
-INSERTLICENSEHERE
+MIT  © Tyler Geist
