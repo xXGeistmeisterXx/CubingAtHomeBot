@@ -9,7 +9,7 @@ Once replacing all the placeholder data you will have to share the sheet with th
 ### Seeing Reults
 When times have been submitted they will be put into a sheet with the same name as the event. The times will noted in terms of seconds and sorted by time entered. 
 ### Formatting Times
-When all times have been submitted for an event you can then format the times to a more readable format. Using https://cubething.kikoho.xyz/format, put the link to the sheet and the name of the event in the website. When you submit and new sheet will be created that is the name of your event + (r)(ex: 3x3 R1(r)). This sheet will be sorted by best time and have the average and place displayed.
+When all times have been submitted for an event you can then format the times to a more readable format. Using https://cubething.kikoho.xyz/format, put the link to the sheet and the name of the event in the website. When you submit and new sheet will be created that is the name of your event + (r) (ex: 3x3 R1(r)). This sheet will be sorted by best time and have the average and place displayed.
 <br>
 ## Information
 This tool was created using Python and vanilla HTML, Javascript and CSS.
