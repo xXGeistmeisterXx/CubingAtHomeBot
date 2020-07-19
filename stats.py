@@ -24,12 +24,8 @@ def getSortedStats(data):
       elif stime != "DNF" and time < stime:
         stime = time
     
-    #print(ltime)
-
     ltime.remove(stime)
     ltime.remove(btime)
-
-    #print(ltime)
 
     if("DNF" in ltime):
       nrow["AVERAGE"] = "DNF"
@@ -37,9 +33,8 @@ def getSortedStats(data):
       nrow["AVERAGE"] = float('%.2f'%(sum(ltime) / len(ltime)))
 
     for i in range(5):
-      nrow["TIMES"][i] = mtos(nrow["TIMES"][i])
+      nrow["TIMES"][i] = secstomins(nrow["TIMES"][i])
       
-
     fdata.append(nrow)
 
   for ind in range(len(fdata)):
@@ -58,12 +53,11 @@ def getSortedStats(data):
   fdata = fdata[::-1]
 
   for ind in range(len(fdata)):
-    fdata[ind]["AVERAGE"] = mtos(fdata[ind]["AVERAGE"])
+    fdata[ind]["AVERAGE"] = secstomins(fdata[ind]["AVERAGE"])
 
   return fdata
 
-
-def mtos(ttime):
+def secstomins(ttime):
   if(ttime == "DNF"):
     return ttime
   secs = int(str(ttime)[:str(ttime).find(".")])
@@ -85,8 +79,7 @@ def mtos(ttime):
     ntime += "." + rest
   return str(ntime)
     
-
-def stom(ttime):
+def minstosecs(ttime):
   if not ":" in ttime:
     return float(ttime)
   else:
