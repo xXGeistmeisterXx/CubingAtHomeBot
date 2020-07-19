@@ -32,43 +32,77 @@ def getscrambles(client, url, name, event):
     images.append(row[ikey])
   return scrambles, images
 
-def geteventsn(client, url, name): fsheet = client.open_by_url(url) sheet =
-fsheet.worksheet(name)
+def geteventsn(client, url, name): 
+  fsheet = client.open_by_url(url) 
+  sheet = fsheet.worksheet(name)
 
-  data = sheet.get_all_records() active = [] for key in list(data[0].keys()):
-      if data[0][key] == "ON": active.append(key) return active
+  data = sheet.get_all_records() 
+  active = [] 
+  for key in list(data[0].keys()):
+      if data[0][key] == "ON": 
+          active.append(key) 
+  return active
 
-def inevent(client, url, name, event, email): fsheet = client.open_by_url(url)
-sheet = fsheet.worksheet(name) data = sheet.get_all_records() emails = [] for
-row in data: row[event] = str(row[event]) if(not row[event].isspace() and
-        row[event] and data.index(row) > 0): emails.append(row[event]) return
-email in emails
+def inevent(client, url, name, event, email): 
+  fsheet = client.open_by_url(url)
+  sheet = fsheet.worksheet(name) 
+  data = sheet.get_all_records() 
+  emails = [] 
+  for row in data: 
+    row[event] = str(row[event]) 
+    if(not row[event].isspace() and row[event] and data.index(row) > 0): 
+      emails.append(row[event]) 
+    return email in emails
 
-def checkemail(client, url, event, email): fsheet = client.open_by_url(url)
-try: sheet = fsheet.worksheet(event) except: return False data =
-sheet.get_all_records() emails = [] for row in data:
+def checkemail(client, url, event, email): 
+  fsheet = client.open_by_url(url)
+  try: 
+    sheet = fsheet.worksheet(event) 
+  except: 
+    return False 
+  data = sheet.get_all_records() 
+  emails = [] 
+  for row in data:
     emails.append(str(row["EMAIL"]))
-
   return str(email) in emails
 
-def formatrun(client, url, name): os.system("clear")
-
-  fsheet = client.open_by_url(url) sheet = fsheet.worksheet(name)
+def formatrun(client, url, name): 
+    
+  fsheet = client.open_by_url(url) 
+  sheet = fsheet.worksheet(name)
 
   data = sheet.get_all_records()
 
-  rs = None try: rs = fsheet.add_worksheet(title=sheet.title + "(r)",
-          rows=str(sheet.row_count), cols="10") except: rs =
-  fsheet.worksheet(sheet.title + "(r)")
+  rs = None 
+  try: 
+    rs = fsheet.add_worksheet(title=sheet.title + "(r)", rows=str(sheet.row_count), cols="10") 
+  except: 
+    rs = fsheet.worksheet(sheet.title + "(r)")
 
-  fdata = stats.getSortedStats(data) output.outdat(rs, fdata)
+  fdata = stats.getSortedStats(data) 
+  output.outdat(rs, fdata)
 
   return "success"
 
-def check(client, url, name): while True: flag = True try: fsheet =
-client.open_by_url(url) except: flag = False if flag: break return(-2)
+def check(client, url, name): 
+  while True: 
+    flag = True 
+    try: 
+      fsheet = client.open_by_url(url) 
+    except: 
+      flag = False 
+    if flag: 
+      break 
+    return(-2)
 
-  while True: flag = True try: sheet = fsheet.worksheet(name) except: flag =
-  False if flag: break return(-1)
+  while True: 
+    flag = True 
+    try: 
+      sheet = fsheet.worksheet(name) 
+    except: 
+      flag = False 
+    if flag: 
+      break 
+    return(-1)
 
   return(1)
