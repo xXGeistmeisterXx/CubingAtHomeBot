@@ -42,7 +42,7 @@ def events():
       pens = ["DNF", "DNF", "DNF", "DNF", "DNF"]
 
       for i in range(1,6):
-        times[i - 1] = st.stom(request.form.get("time" + str(i)))
+        times[i - 1] = st.minstosecs(request.form.get("time" + str(i)))
         if(times[i - 1] < 240):
           pens[i - 1] = request.form.get("pen" + str(i))
       
