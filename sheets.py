@@ -58,8 +58,8 @@ def inevent(client, url, name, event, email):
   for row in data:
     row[event] = str(row[event])
     if(not row[event].isspace() and row[event] and data.index(row) > 0): 
-      emails.append(row[event]) 
-  return email in emails
+      emails.append(row[event].lower()) 
+  return email.lower() in emails
 
 def checkemail(client, url, event, email): 
   fsheet = client.open_by_url(url)
@@ -71,8 +71,8 @@ def checkemail(client, url, event, email):
   
   emails = [] 
   for row in data:
-    emails.append(str(row["EMAIL"]))
-  return str(email) in emails
+    emails.append(str(row["EMAIL"]).lower())
+  return str(email).lower() in emails
 
 def formatrun(client, url, name): 
     
