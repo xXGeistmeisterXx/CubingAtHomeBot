@@ -37,7 +37,7 @@ def events():
       if(sh.checkemail(client, url, request.form.get("event"), request.form.get("email"))):
         return render_template("error.html", error="already submitted", name=pname)
 
-      if(request.form.get("email") != request.form.get("temail")):
+      if(request.form.get("email").lower() != request.form.get("temail").lower()):
         return render_template("error.html", error="emails do not match", name=pname)
 
       times = [0, 0, 0, 0, 0]
