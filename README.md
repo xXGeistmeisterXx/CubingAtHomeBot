@@ -1,5 +1,5 @@
-# CubingAtHomeBot
-CubingAtHomeBot is an application created to run the second Cubing At Home competition. It is currently being hosted at https://cubething.kikoho.xyz. If you have any questions you can contact geistmeister11@gmail.com.
+# VirtualCompBot
+VirtualCompBot is an application created to run the second Cubing At Home competition. It is currently being hosted at https://cubething.kikoho.xyz. If you have any questions you can contact geistmeister11@gmail.com.
 <br><br>
 ## Running a Competition
 All you need to create a competition is a google sheet with certain formatting. You can get the formatting here: https://docs.google.com/spreadsheets/d/1YWisYkk5w2AojH4IQtcmehZkFAzlgTpVUdkwtqdyb-Y/copy.
