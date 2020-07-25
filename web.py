@@ -7,6 +7,10 @@ pname = "VCB"
 
 app = Flask(__name__)
 
+@app.route('/freevbucks',  methods=['POST', 'GET'])
+def rickroll():
+  return redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
+
 @app.route('/',  methods=['POST', 'GET'])
 def home():
   return redirect(url_for("events"))
