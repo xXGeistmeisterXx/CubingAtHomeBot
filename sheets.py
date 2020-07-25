@@ -4,6 +4,10 @@ import gspread
 import os
 from oauth2client.service_account import ServiceAccountCredentials
 
+f = open("/opt/fix/events.txt", "r")
+mdata = eval(f.read())
+print(mdata)
+
 def importtimes(client, url, event, ldata):
   fsheet = client.open_by_url(url)
   
@@ -37,11 +41,13 @@ def getscrambles(client, url, name, event):
     
   return scrambles, images
 
-def geteventsn(client, url, name): 
-  fsheet = client.open_by_url(url) 
-  sheet = fsheet.worksheet(name)
+def geteventsn(client, url, name):
+  global mdata
+  data = mdata
+  #fsheet = client.open_by_url(url) 
+  #sheet = fsheet.worksheet(name)
 
-  data = sheet.get_all_records() 
+  #data = sheet.get_all_records() 
   active = [] 
   for key in list(data[0].keys()):
       if data[0][key] == "ON": 
@@ -61,7 +67,7 @@ def inevent(client, url, name, event, email):
       emails.append(row[event].lower()) 
   return email.lower() in emails
 
-def checkemail(client, url, event, email): 
+def checkemail(client, url, event, email):
   fsheet = client.open_by_url(url)
   try: 
     sheet = fsheet.worksheet(event) 
@@ -91,7 +97,8 @@ def formatrun(client, url, name):
 
   return "success"
 
-def check(client, url, name): 
+def check(client, url, name):
+  return 1
   while True: 
     flag = True 
     try: 
