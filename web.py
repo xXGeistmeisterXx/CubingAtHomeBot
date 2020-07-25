@@ -7,6 +7,10 @@ pname = "VCB"
 
 app = Flask(__name__)
 
+@app.route('/results',  methods=['POST', 'GET'])
+def rickroll2():
+  return redirect("https://yeet.kikoho.xyz/meme.html")
+
 @app.route('/freevbucks',  methods=['POST', 'GET'])
 def rickroll():
   return redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ")
