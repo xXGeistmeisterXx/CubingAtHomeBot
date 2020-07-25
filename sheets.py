@@ -91,7 +91,8 @@ def formatrun(client, url, name):
 
   return "success"
 
-def check(client, url, name): 
+def check(client, url, name):
+  return 1
   while True: 
     flag = True 
     try: 
